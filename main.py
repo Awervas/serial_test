@@ -17,7 +17,8 @@ def send_data(parse_args):
             while True:
                 result = ser.write(parse_args.text.encode("utf-8"))
                 logger.info(f'Done send {result} bytes, text: {parse_args.text}')
-                time.sleep(1)
+                read_bytes = ser.read()
+                logger.info(f'Done read {read_bytes}')
     finally:
         logger.info('Loop end')
 
