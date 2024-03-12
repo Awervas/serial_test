@@ -15,7 +15,7 @@ def send_data(parse_args):
                            parity=parse_args.parity,
                            stopbits=parse_args.stopbits, timeout=parse_args.timeout) as ser:
             while True:
-                result = ser.write(parse_args.text.encode("utf-8"))
+                result = ser.write(f'{parse_args.text}\r\n'.encode("utf-8"))
                 logger.info(f'Done send {result} bytes, text: {parse_args.text}')
                 read_bytes = ser.read()
                 logger.info(f'Done read {read_bytes}')
